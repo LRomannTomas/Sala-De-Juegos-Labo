@@ -1,0 +1,22 @@
+@if(auth.usuario_actual != null) {
+
+<div class="div_main user_background">
+    <div class="content_user">
+        <div class="text_loged">
+            Bienvenido
+            <p>{{auth.usuario_actual.email}}</p>
+        </div>
+    </div>
+</div>
+} @else {
+<div class="div_main user_background2">
+    <div class="div_user_home">
+        <div class="div_text">
+            Sala de Juegos
+        </div>
+        <a class="btn" href="registro">Registrarse</a>
+        <a class="btn" href="login">Iniciar Sesión</a>
+    </div>
+</div>
+}
+<a href="quien_soy" class="github_data">¿Quién Soy?</a>

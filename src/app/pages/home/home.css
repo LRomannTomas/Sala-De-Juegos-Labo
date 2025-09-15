@@ -1,0 +1,149 @@
+.user_background2 {
+  background-color: var(--secondary-color);
+  background-image: url("../../../../public/images/fondo/fondo_home2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.div_user_home,
+.content_user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 630px;
+  padding: 40px 40px;
+  background: #dde1e7;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+
+.content_user {
+  border: 4px var(--secondary-color) solid;
+}
+
+.div_user_home .div_text {
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #595959;
+}
+
+.text_loged {
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.text_loged p {
+  font-size: 30px;
+}
+
+.btn {
+  margin: 5px 0 15px 0;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  line-height: 40px;
+  font-weight: 600;
+  background: #dde1e7;
+  border-radius: 25px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #595959;
+  box-shadow: 2px 2px 5px #BABECC,
+    -5px -5px 10px #ffffff73;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: rgba(181, 185, 190, 0.466);
+  color: var(--tertiary-color);
+}
+
+.github_data {
+  position: absolute;
+  bottom: 3.5%;
+  left: 2%;
+  color: #1B091F;
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  padding: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+
+/*Media Queries*/
+
+/* Tablets o pantallas medianas (769px a 1024px) */
+@media (max-width: 1024px) {
+  .div_user_home,
+  .content_user {
+    width: 80%;
+    padding: 30px;
+  }
+
+  .div_user_home .div_text,
+  .text_loged {
+    font-size: 40px;
+  }
+
+  .text_loged p {
+    font-size: 25px;
+  }
+
+  .btn {
+    font-size: 17px;
+    height: 48px;
+  }
+
+  .github_data {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 4%;
+    font-size: 22px;
+    padding: 15px;
+  }
+}
+
+/* Celulares (pantallas hasta 768px) */
+@media (max-width: 768px) {
+  .div_user_home,
+  .content_user {
+    width: 90%;
+    padding: 20px 0;
+  }
+
+  .div_user_home .div_text,
+  .text_loged {
+    font-size: 32px;
+  }
+
+  .div_text {
+    margin-top: 15px;
+  }
+
+  .text_loged p {
+    font-size: 18px;
+  }
+
+  .btn {
+    font-size: 16px;
+    height: 45px;
+    width: 250px;
+    line-height: 32px;
+  }
+
+  .github_data {
+    font-size: 18px;
+  }
+}

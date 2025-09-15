@@ -1,0 +1,38 @@
+<div class="div_main video_background">
+    <video autoplay muted loop poster="images/fondo/loop.webp">
+        <source
+            src="videos/loop.mp4"
+            type="video/mp4">
+    </video>
+    <div class="div_login">
+        <div class="text">
+            Inicio de Sesión
+        </div>
+        <div>
+            <div class="field">
+                <input type="text" [(ngModel)]="email" placeholder="Correo Electrónico" required>
+                <span class="bi bi-envelope-at-fill"></span>
+            </div>
+            <div class="field password-field">
+                <input [type]="isPasswordVisible ? 'text' : 'password'" [(ngModel)]="clave" placeholder="Contraseña" required>
+                <span class="bi bi-key-fill"></span>
+                <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+                    <i [class]="isPasswordVisible ?  'bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
+                </button>
+            </div>
+            @if(iSesion) {
+                <p class="sesionInc">Credenciales Incorrectas</p>
+            }
+            <button (click)="loguearse(email, clave)">Iniciar Sesión</button>
+            <div class="sign-up">
+                <div class="social-icons">
+                    <button (click)="loguearse('roman@gmail.com', '123456')"><span>F</span></button>
+                    <button (click)="loguearse('tomas@hotmail.com', '123456')"><span>T</span></button>
+                    <button (click)="loguearse('juan@hotmail.com', '123456')"><span>P</span></button>
+                </div>
+                ¿Aún no eres miembro?
+                <a href="registro">¡Registrate Ya!</a>
+            </div>
+        </div>
+    </div>
+</div>

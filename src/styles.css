@@ -1,1 +1,218 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+:root {
+  --primary-color: white;
+  --secondary-color: black;
+  --tertiary-color: #aa2aa6;
+  --video-color: #090114;
+  --correct-color: #4CAF50;
+  --incorrect-color: #f44336;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.div_main {
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 100dvh;
+}
+
+.user_background {
+  background-color: var(--secondary-color);
+  background-image: url("../public/images/fondo/fondo_home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.video_background {
+  background-color: var(--video-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video_background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.btn_jugar {
+  border-radius: 50%;
+  box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+  margin-top: 59px;
+}
+
+.btn_jugar i {
+  font-size: 60px;
+  padding: 20px;
+}
+
+.div_opciones {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.btn_opts {
+  font-size: 20px;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  padding: 15px 30px;
+  border-radius: 20px;
+  border: var(--secondary-color) 2px solid;
+}
+
+.btn_opts:hover {
+  background-color: rgb(182, 180, 180);
+}
+
+.correcta,
+.correcta:hover {
+  background-color: var(--correct-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.incorrecta,
+.incorrecta:hover {
+  background-color: var(--incorrect-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.div_final_juego {
+  width: 600px;
+  height: 450px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #ecf0f3;
+  box-shadow: -3px -3px 7px var(--primary-color),
+    3px 3px 5px #ceced1;
+}
+
+.div_final_juego p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 40px;
+}
+
+.div_final_juego button {
+  font-size: 25px;
+  padding: 15px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 10px;
+  box-shadow: inset 1px 1px 10px var(--primary-color),
+    3px 3px 5px #ceced1;
+}
+
+.div_final_juego button:hover {
+  background-color: rgba(0, 0, 0, 0.564);
+}
+
+.victoria {
+  font-size: 50px;
+  color: var(--correct-color);
+}
+
+.derrota {
+  font-size: 60px;
+  color: var(--incorrect-color);
+}
+
+/*Media Queries*/
+
+/* Tablets o pantallas medianas (769px a 1024px) */
+@media (max-width: 1024px) {
+  .btn_jugar {
+    margin-top: 40px;
+  }
+
+  .btn_jugar i {
+    font-size: 50px;
+    padding: 15px;
+  }
+
+  .div_final_juego {
+    width: 500px;
+    height: auto;
+    padding: 15px;
+  }
+
+  .div_final_juego p {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .div_final_juego button {
+    font-size: 22px;
+    padding: 12px 20px;
+  }
+
+  .victoria {
+    font-size: 40px;
+  }
+
+  .derrota {
+    font-size: 45px;
+  }
+}
+
+/* Celulares (pantallas hasta 768px) */
+@media (max-width: 768px) {
+  .div_opciones {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn_opts {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .div_final_juego {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .div_final_juego p {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .div_final_juego button {
+    font-size: 20px;
+    padding: 10px 16px;
+  }
+
+  .victoria {
+    font-size: 32px;
+  }
+
+  .derrota {
+    font-size: 36px;
+  }
+}

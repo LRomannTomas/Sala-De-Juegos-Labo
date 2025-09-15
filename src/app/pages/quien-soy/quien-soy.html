@@ -1,0 +1,40 @@
+<div class="div_main video_background">
+    <video autoplay muted loop preload="auto">
+        <source
+            src="videos/loop_quien_soy.mp4"
+            type="video/mp4">
+    </video>
+    <a href="home" class="home_link">Home</a>
+    @if (explicacionVisible) {
+        <div class="explanation">
+            <button class="close" (click)="cambiarVisibilidadExplicacion()"><i class="bi bi-x-lg"></i></button>
+            <p><span class="colored_title">Cálculo Mental</span> es un juego de operaciones matemáticas a contrarreloj (2 minutos) con 3 opciones posibles, que 
+            incluye el divertido añadido de <span class="colored2">Power Ups</span> (no pueden acumularse):<br><br>
+            <span class="colored2">1 - </span>Descarta una de las opciones incorrectas de forma aleatoria. <span class="colored">Se consigue al resolver 3 operaciones matemáticas consecutivas.</span><br>
+            <span class="colored2">2 - </span>Permite devolver 3 segundos al tiempo. <span class="colored">Se consigue al resolver 5 operaciones matemáticas consecutivas.</span><br>
+            <span class="colored2">3 - </span>Adivina la respuesta automáticamente. <span class="colored">Se consigue al resolver 7 operaciones matemáticas consecutivas.</span><br><br>
+            Por cada respuesta correcta se sumará 1 punto al marcador, <span class="colored">no descuentan las incorrectas.</span><br>
+            ¿Cuántos puntos serás capaz de conseguir?</p>
+        </div>
+    } @else {
+        <div class="wrapper">
+            <div class="img-area">
+                <div class="inner-area">
+                    <img src="{{miData.avatar_url}}" alt="Roman Tomas">
+                </div>
+            </div>
+            <div class="icon arrow"><i class="fas fa-arrow-left"></i></div>
+            <div class="icon dots"><i class="fas fa-ellipsis-v"></i></div>
+            <div class="name">{{miData.name}}</div>
+            <div class="country">{{miData.location}}</div>
+            <div class="email">Email: {{miData.email}}</div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/tomii22roman" target="_blank" class="insta"><i class="bi bi-instagram"></i></a>
+                <a href="https://github.com/LRomannTomas" target="_blank" class="github"><i class="bi bi-github"></i></a>
+            </div>
+            <div class="div_btn">
+                <button (click)="cambiarVisibilidadExplicacion()">Juego: Cálculo Mental</button>
+            </div>
+        </div>
+    }
+</div>

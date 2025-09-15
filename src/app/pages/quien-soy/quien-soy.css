@@ -1,0 +1,394 @@
+.div_main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #ecf0f3;
+}
+
+.home_link {
+  background: #ecf0f3;
+  box-shadow: -3px -1px 7px var(--primary-color),
+  3px 3px 5px #ceced1;
+  text-decoration: none;
+  border-radius: 50%;
+  border: var(--secondary-color) solid 3px;
+  padding: 10px;
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-size: 20px;
+  z-index: 2;
+}
+
+.explanation {
+  width: 800px;
+  padding: 25px 30px 40px 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #ecf0f3;
+  z-index: 1;
+  box-shadow: -3px -3px 7px var(--primary-color),
+  3px 3px 5px #ceced1;
+}
+
+.explanation p {
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.close {
+  margin-bottom: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #000000e9;
+  border: var(--secondary-color) solid;
+}
+
+.close:hover {
+  background-color: var(--tertiary-color);
+}
+
+.bi-x-lg{
+  font-weight: bolder;
+  font-size: 30px;
+  color: var(--primary-color);
+}
+
+.colored, .colored2, .colored_title {
+  font-size: 22px;
+  color: var(--tertiary-color);
+  font-weight: bold;
+}
+
+.colored_title {
+  font-size: 29px;
+}
+
+.colored2 {
+  color: var(--correct-color);
+  font-size: 25px;
+}
+
+.wrapper .img-area,
+.social-icons a,
+.div_btn button {
+  background: #ecf0f3;
+  box-shadow: -3px -3px 7px var(--primary-color),
+    3px 3px 5px #ceced1;
+}
+
+.wrapper {
+  position: relative;
+  width: 450px;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #ecf0f3;
+}
+
+.wrapper .icon {
+  font-size: 17px;
+  color: #31344b;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.7;
+  top: 15px;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.wrapper .icon i {
+  position: relative;
+  z-index: 9;
+}
+
+.wrapper .icon.arrow {
+  left: 15px;
+}
+
+.wrapper .icon.dots {
+  right: 15px;
+}
+
+.wrapper .img-area {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-area .inner-area {
+  height: calc(100% - 25px);
+  width: calc(100% - 25px);
+  border-radius: 50%;
+}
+
+.inner-area img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wrapper .name {
+  font-size: 25px;
+  font-weight: bold;
+  color: #31344b;
+  margin: 10px 0 5px 0;
+}
+
+.wrapper .country {
+  color: #44476a;
+  font-weight: 500;
+  font-size: 16px;
+  margin: 0px 0 5px 0;
+}
+
+.wrapper .email {
+  margin: 5px 0 5px 0;
+  font-weight: 500;
+}
+
+.wrapper .social-icons {
+  margin: 15px 0 25px 0;
+}
+
+.social-icons a {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  margin: 0 10px;
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.social-icons a i {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  line-height: 40px;
+}
+
+.social-icons a.insta i {
+  color: #E1306C;
+}
+
+.social-icons a.github i {
+  color: var(--secondary-color);
+}
+
+.wrapper .div_btn {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.div_btn button {
+  position: relative;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  color: #31344b;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.div_btn button:first-child {
+  margin-right: 10px;
+}
+
+.div_btn button:last-child {
+  margin-left: 10px;
+}
+
+.social-icons a:hover::before,
+.wrapper .icon:hover::before,
+.div_btn button:hover:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  background: #ecf0f3;
+  box-shadow: inset -3px -3px 7px var(--primary-color),
+    inset 3px 3px 5px #ceced1;
+}
+
+.div_btn button:hover:before {
+  z-index: -1;
+  border-radius: 5px;
+}
+
+/*Media Queries*/
+/* Tablets o pantallas medianas (769px a 1024px) */
+@media only screen and (max-width: 1024px) {
+  .div_main {
+    padding: 30px;
+    min-height: auto;
+  }
+
+  .explanation {
+    width: 80%;
+    padding: 25px;
+    font-size: 22px;
+  }
+
+  .explanation p {
+    font-size: 24px;
+  }
+
+  .wrapper {
+    width: 70%;
+    padding: 25px;
+  }
+
+  .wrapper .name {
+    font-size: 24px;
+  }
+
+  .wrapper .country {
+    font-size: 16px;
+  }
+
+  .wrapper .email {
+    font-size: 15px;
+  }
+
+  .wrapper .social-icons a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icons a i {
+    font-size: 22px;
+  }
+
+  .wrapper .div_btn {
+    display: block;
+  }
+
+  .div_btn button {
+    font-size: 16px;
+  }
+
+  .div_btn button:first-child,
+  .div_btn button:last-child {
+    margin: 0;
+    width: 48%;
+  }
+
+  .wrapper .icon.arrow,
+  .wrapper .icon.dots {
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+  }
+}
+
+/* Celulares (pantallas hasta 768px) */
+@media only screen and (max-width: 768px) {
+  .div_main {
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .explanation {
+    width: 90%;
+    padding: 20px;
+    font-size: 20px;
+    overflow-y: auto;
+  }
+
+  .explanation p {
+    font-size: 16px;
+  }
+
+  .colored_title {
+    font-size: 18px;
+  }
+
+  .colored, .colored2 {
+    font-size: 17px;
+  }
+
+  .close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .close i {
+    line-height: 1px;
+  }
+
+  .wrapper {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .wrapper .name {
+    font-size: 22px;
+  }
+
+  .wrapper .country {
+    font-size: 14px;
+  }
+
+  .wrapper .email {
+    font-size: 14px;
+  }
+
+  .wrapper .social-icons a {
+    width: 35px;
+    height: 35px;
+  }
+
+  .social-icons a i {
+    font-size: 20px;
+  }
+
+  .div_btn button {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .div_btn button:first-child,
+  .div_btn button:last-child {
+    margin: 0;
+    width: 48%;
+  }
+
+  .wrapper .icon.arrow,
+  .wrapper .icon.dots {
+    font-size: 14px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+  }
+}

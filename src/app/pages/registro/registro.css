@@ -1,0 +1,169 @@
+.div_registro {
+  width: 630px;
+  padding: 40px 40px;
+  background: #dde1e7;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+
+.div_registro .text {
+  font-size: 33px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #595959;
+}
+
+.field {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.field input {
+  height: 100%;
+  width: 100%;
+  padding-left: 45px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: #dde1e7;
+  color: #595959;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 5px #BABECC,
+    inset -5px -5px 10px #ffffff73;
+}
+
+.field input:focus {
+  box-shadow: inset 1px 1px 2px #BABECC,
+    inset -1px -1px 2px #ffffff73;
+}
+
+.field span {
+  position: absolute;
+  color: #595959;
+  width: 50px;
+  line-height: 50px;
+}
+
+button {
+  margin: 5px 0 15px 0;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  line-height: 50px;
+  font-weight: 600;
+  background: #dde1e7;
+  border-radius: 25px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #595959;
+  box-shadow: 2px 2px 5px #BABECC,
+    -5px -5px 10px #ffffff73;
+}
+
+button:hover {
+  background: rgba(181, 185, 190, 0.466);
+  color: var(--tertiary-color);
+}
+
+.sign-in {
+  margin: 10px 0 0 0;
+  color: #595959;
+  font-size: 16px;
+}
+
+.sign-in a {
+  color: var(--tertiary-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.sign-in a:hover {
+  text-decoration: underline;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 45px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 39%;
+  right: 15px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #595959;
+  font-size: 30px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+}
+
+.bi-eye-fill,
+.bi-eye-slash-fill {
+  position: absolute;
+  top: 60%;
+  right: -15%;
+  transform: translateY(-50%);
+}
+
+.registroInc {
+  color: var(--incorrect-color);
+  font-weight: 600;
+  margin: 20px 0px;
+}
+
+/*Media Queries*/
+/* Tablets o pantallas medianas (769px a 1024px) */
+@media (max-width: 1024px) {
+  .div_registro {
+    width: 80%;
+    padding: 30px;
+  }
+
+  .div_registro .text {
+    font-size: 28px;
+    text-align: center;
+  }
+}
+
+/* Celulares (pantallas hasta 768px) */
+@media (max-width: 768px) {
+  .div_registro {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .div_registro .text {
+    font-size: 25px;
+  }
+
+  .field input {
+    font-size: 16px;
+    padding-left: 40px;
+  }
+
+  button {
+    font-size: 16px;
+    height: 45px;
+  }
+
+  .sign-in {
+    font-size: 14px;
+    text-align: center;
+  }
+}

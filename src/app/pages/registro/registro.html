@@ -1,0 +1,43 @@
+<div class="div_main video_background">
+    <video autoplay muted loop poster="images/fondo/loop.webp">
+        <source src="videos/loop.mp4" type="video/mp4">
+    </video>
+    <div class="div_registro">
+        <div class="text">
+            Registro
+        </div>  
+        <div>
+            <div class="field">
+                <input type="text" [(ngModel)]="nombre" placeholder="Nombre" required>
+                <span class="bi bi-person-circle"></span>
+            </div>
+            <div class="field">
+                <input type="text" [(ngModel)]="apellido" placeholder="Apellido" required>
+                <span class="bi bi-person-bounding-box"></span>
+            </div>
+            <div class="field">
+                <input type="text" [(ngModel)]="edad" placeholder="Edad" required>
+                <span class="i bi-percent"></span>
+            </div>
+            <div class="field">
+                <input type="text" [(ngModel)]="email" placeholder="Correo Electrónico" required>
+                <span class="bi bi-envelope-at-fill"></span>
+            </div>
+            <div class="field password-field">
+                <input [type]="isPasswordVisible ? 'text' : 'password'" [(ngModel)]="clave" placeholder="Contraseña" required>
+                <span class="bi bi-key-fill"></span>
+                <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+                    <i [class]="isPasswordVisible ?  'bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
+                </button>
+            </div>
+            @if(iRegistro) {
+                <p class="registroInc">Campos vacíos o usuario ya registrado</p>
+            }
+            <button (click)="registrarse(email, clave)">Registrarse</button>
+            <div class="sign-in">
+                ¿Ya eres miembro?
+                <a href="login">¡Inicia Sesión!</a>
+            </div>
+        </div>
+    </div>
+</div>
