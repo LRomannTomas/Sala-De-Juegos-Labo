@@ -1,0 +1,143 @@
+nav {
+  position: absolute;
+  display: flex;
+  height: 120px;
+  width: 100%;
+  background: #1b1b1b;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
+  z-index: 1;
+  border-bottom: 2px var(--primary-color) solid;
+}
+
+nav .logo {
+  color: var(--primary-color);
+  font-size: 35px;
+  font-weight: 600;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #111;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  width: 30px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+/*Media Queries*/
+/* Tablets o pantallas medianas (769px a 1550px) */
+@media (max-width: 1550px) {
+  nav {
+    z-index: 2;
+  }
+
+  nav ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1b1b1b;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  nav.active ul {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  nav ul li a {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1b1b1b;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    padding: 20px 0;
+  }
+
+  nav.active ul {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  nav ul li a {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  nav {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    gap: 10px;
+  }
+}

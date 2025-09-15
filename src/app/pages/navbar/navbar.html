@@ -1,0 +1,19 @@
+<nav [ngClass]="{'active': isMenuOpen}">
+    <a href="home" class="logo">
+        Sala de Juegos
+    </a>
+    <div class="menu-toggle" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <ul>
+        <li><a href="chat">Sala de Chat</a></li>
+        <li><a href="juegos/ahorcado">Ahorcado</a></li>
+        <li><a href="juegos/mayor-menor">Mayor o Menor</a></li>
+        <li><a href="juegos/preguntados">Preguntados</a></li>
+        <li><a href="juegos/calculo-mental">Cálculo Mental</a></li>
+        <li><a href="resultados">Resultados</a></li>
+        <li><a (click)="salir()">Cerrar Sesión</a></li>
+    </ul>
+</nav>
