@@ -42,7 +42,23 @@ export class AuthService {
 
   // Cerrar Sesión
   async cerrarSesion() {
-    const {error} = await this.sb.supabase.auth.signOut();
-    this.router.navigateByUrl("home");
+  const { data: { session } } = await this.sb.supabase.auth.getSession();
+
+  if (!session) {
+    console.warn("No hay sesión activa, no se puede cerrar sesión.");
+    this.router.navigateByUrl("home"); // igual redirigimos al home
+    return;
   }
+
+  const { error } = await this.sb.supabase.auth.signOut();
+  if (error) {
+    console.error("Error al cerrar sesión:", error.message);
+    return;
+  }
+
+  console.log("Sesión cerrada correctamente");
+  this.router.navigateByUrl("home");
+}
+
+
 }
