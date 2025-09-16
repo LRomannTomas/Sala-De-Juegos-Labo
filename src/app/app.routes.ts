@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Error } from './pages/error/error';
-import { loginGuard } from './guards/login.guard';
-import { noLoginGuard } from './guards/no-login.guard';
+import { noLoginGuard } from './guards/no-login-guard';
+import { loginGuard } from './guards/login-guard';
+
 
 export const routes: Routes = [{
     path: "home", component: Home,

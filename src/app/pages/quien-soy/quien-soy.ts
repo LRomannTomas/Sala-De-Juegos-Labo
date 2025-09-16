@@ -5,7 +5,7 @@ import { GithubService } from '../../services/github';
   selector: 'app-quien-soy',
   imports: [],
   templateUrl: './quien-soy.html',
-  styleUrl: './quien-soy.css'
+  styleUrls: ['./quien-soy.css']
 })
 export class QuienSoy
 {
