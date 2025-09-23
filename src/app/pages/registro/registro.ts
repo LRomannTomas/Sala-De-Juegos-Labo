@@ -28,15 +28,40 @@ export class Registro
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
-  registrarse(correo:string, contraseña:string){
-    this.auth.crearCuenta(correo, contraseña).then(({ data, error }) => {
-      if(data.user != null && data.session != null){
+  registrarse(correo: string, contraseña: string) {
+  this.auth.crearCuenta(correo, contraseña).then(async ({ data, error }) => {
+    if (error) {
+      console.error("Error creando cuenta:", error.message);
+      this.iRegistro = true;
+      return;
+    }
+
+    if (data?.user) {
+      const nuevoUsuario = new Usuario(
+        this.nombre,
+        this.apellido,
+        Number(this.edad),
+        this.email,
+        data.user.id
+      );
+
+      const insertado = await this.database.crearUsuario(nuevoUsuario);
+
+      if (insertado) {
         this.router.navigateByUrl("home");
-        const nuevoUsuario = new Usuario(this.nombre, this.apellido, Number(this.edad), this.email);
-        this.database.crearUsuario(nuevoUsuario);
       } else {
         this.iRegistro = true;
       }
-    });
-  }
+      
+    } 
+    else {
+      console.error("No se recibió user en signUp");
+      this.iRegistro = true;
+    }
+  });
+}
+
+
+
+
 }

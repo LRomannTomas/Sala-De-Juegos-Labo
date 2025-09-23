@@ -17,22 +17,29 @@ export class AuthService {
     });
   }
 
-  //Devolver Usuario Actual
+
   async getUsuarioActual() {
     const response = await this.sb.supabase.auth.getSession();
     const session = response.data.session;
     return this.usuario_actual = session ? session.user : null;
   }
 
-  //Crear Cuenta
-  async crearCuenta(correo:string, contraseña:string) {
-    return await this.sb.supabase.auth.signUp({
-      email: correo,
-      password: contraseña
-    });
+
+  async crearCuenta(correo: string, contraseña: string) {
+  const { data, error } = await this.sb.supabase.auth.signUp({
+    email: correo,
+    password: contraseña,
+  });
+
+  if (error) {
+    console.error("Error en signUp:", error.message);
   }
 
-  // Iniciar Sesión
+  return { data, error };
+}
+
+
+
   async iniciarSesion(correo:string, contraseña:string) {
     return await this.sb.supabase.auth.signInWithPassword({
       email: correo,
@@ -40,13 +47,13 @@ export class AuthService {
     });
   }
 
-  // Cerrar Sesión
+
   async cerrarSesion() {
   const { data: { session } } = await this.sb.supabase.auth.getSession();
 
   if (!session) {
     console.warn("No hay sesión activa, no se puede cerrar sesión.");
-    this.router.navigateByUrl("home"); // igual redirigimos al home
+    this.router.navigateByUrl("home");
     return;
   }
 

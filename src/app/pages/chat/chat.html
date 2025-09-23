@@ -1,1 +1,29 @@
-<p>chat works!</p>
+<app-navbar></app-navbar>
+
+<div class="div_main user_background">
+  <div class="div_mensajes">
+    @for(msj of mensajes(); track msj.id) {
+      <div class="mensajes"
+           [class.mensaje_propio]="msj.id_usuario == this.id"
+           [class.mensaje_ajeno]="msj.id_usuario != id">
+
+        <span>{{ msj.mensaje }}</span>
+        <small>
+          {{ msj.usuario }} • {{ msj.fecha | date:'yyyy-MM-dd HH:mm' }}
+        </small>
+      </div>
+    }
+  </div>
+
+  <div class="div_chat">
+    <input class="mensaje"
+           type="text"
+           placeholder="Escriba aquí..."
+           [(ngModel)]="mensaje">
+    <button class="btn_enviar" (click)="enviarMensaje()">Enviar</button>
+  </div>
+
+  @if(mensaje_vacio()) {
+    <span class="error_mensaje">Mensaje vacío</span>
+  }
+</div>

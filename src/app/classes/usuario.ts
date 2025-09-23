@@ -1,14 +1,10 @@
 export class Usuario {
-    id?: number;
-    nombre: string;
-    apellido: string;
-    edad: number;
-    correo: string;
-
-    constructor(nombre:string, apellido:string, edad:number = 0, correo:string) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.edad = edad;
-        this.correo = correo;
-    }
+  constructor(
+    public nombre: string,
+    public apellido: string,
+    public edad: number,
+    public correo: string,
+    public auth_id?: string,   
+    public id?: number         
+  ) {}
 }

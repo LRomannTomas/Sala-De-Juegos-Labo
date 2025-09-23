@@ -24,4 +24,5 @@ export class QuienSoy
   cambiarVisibilidadExplicacion() {
     this.explicacionVisible = !this.explicacionVisible;
   }
+  
 }

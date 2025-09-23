@@ -18,9 +18,18 @@ export class DatabaseUsersService {
   }
 
   async crearUsuario(usuario: Usuario) {
-    const {data, error} = await this.sb.supabase.from("usuarios").insert(usuario);
-    console.log(data, error);
+  const { error } = await this.sb.supabase.from("usuarios").insert(usuario);
+
+  if (error) {
+    console.error("Error insertando en usuarios:", error.message, error.details);
+    return false;
   }
+
+  console.log("Usuario insertado correctamente");
+  return true;
+}
+
+
 
   async modificarUsuario(usuario: Usuario) {
     const {data, error} = await this.sb.supabase.from("usuarios").update(usuario).eq("id", usuario.id);

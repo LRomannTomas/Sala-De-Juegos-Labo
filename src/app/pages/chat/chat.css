@@ -1,0 +1,159 @@
+.div_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.div_mensajes {
+  background: #f9f9f9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  height: 500px;
+  margin: 100px 0 30px 0;
+  border-radius: 15px;
+  padding: 15px;
+  overflow-y: auto;
+  scroll-behavior: smooth; 
+}
+
+.mensajes {
+  max-width: 70%;
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 10px 14px;
+  margin: 6px 0;
+  border-radius: 20px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  display: inline-block;
+}
+
+
+.mensaje_propio {
+  background: #007bff; 
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+  text-align: right;
+}
+
+
+.mensaje_ajeno {
+  background: #e6e6e6;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+  text-align: left;
+}
+
+
+.mensajes small {
+  display: block;
+  font-size: 12px;
+  color: #181515;
+  margin-top: 4px;
+}
+
+.error_mensaje {
+  color: var(--incorrect-color);
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Caja de input + botón */
+.div_chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+  gap: 10px;
+}
+
+.mensaje {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.mensaje:focus {
+  border-color: var(--tertiary-color);
+  box-shadow: 0 0 5px var(--tertiary-color);
+}
+
+.btn_enviar {
+  border-radius: 25px;
+  padding: 10px 20px;
+  background: #007bff; /* azul principal */
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn_enviar:hover {
+  background: #0056b3; /* azul más oscuro al hover */
+  transform: scale(1.05);
+}
+
+/* =================== */
+/* Media Queries       */
+/* =================== */
+
+/* Tablets (769px a 1024px) */
+@media (max-width: 1024px) {
+  .div_mensajes,
+  .div_chat {
+    width: 90%;
+    height: 450px;
+  }
+
+  .mensaje {
+    font-size: 15px;
+  }
+}
+
+/* Celulares (hasta 768px) */
+@media (max-width: 768px) {
+  .div_mensajes {
+    width: 95%;
+    height: 400px;
+    margin: 80px 0 20px 0;
+    padding: 10px;
+  }
+
+  .mensajes {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .div_chat {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .mensaje {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .btn_enviar {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .error_mensaje {
+    font-size: 14px;
+    text-align: center;
+  }
+}

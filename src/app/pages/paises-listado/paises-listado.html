@@ -1,0 +1,41 @@
+ <div class="bg-gray-100 min-h-screen p-4 sm:p-8 font-sans">
+      <div class="flex justify-center mb-6">
+        <input
+          type="text"
+          [(ngModel)]="textoBusqueda"
+          (input)="aplicarFiltro()"
+          placeholder="Buscar un país..."
+          class="w-full sm:w-2/3 md:w-1/2 p-3 text-lg border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+        />
+      </div>
+
+      <div class="contenedor-principal">
+        <h2 class="titulo-listado">Países de Europa</h2>
+      </div>
+
+      @if (cargando) {
+      <p>Cargando países...</p>
+      } @else if (error) {
+      <p>Hubo un error al cargar los datos. Inténtelo más tarde.</p>
+      } @else {
+      
+      <div class="container-fluid mt-4">
+        <div class="row g-4 justify-content-center">
+          @for (pais of paisesFiltrados; track pais.cca2) {
+          <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100">
+              <img [src]="pais.flags.svg" class="card-img-top" alt="...">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ pais.name.official }}</h5>
+                <p class="card-text">Capital: {{ pais.capital }}</p>
+                <a class="btn btn-primary mt-auto">Detalle</a>
+              </div>
+            </div>
+          </div>
+          } @empty {
+            <p>No se encontraron resultados para la búsqueda.</p>
+          }
+        </div>
+      </div>
+      }
+    </div>
