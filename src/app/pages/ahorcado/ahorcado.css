@@ -1,0 +1,229 @@
+.spinner_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid var(--tertiary-color);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+}
+
+.user_background {
+  background-image: url("../../../../public/images/ahorcado/fondo_ahorcado.jpg");
+}
+
+.div_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  min-height: 100dvh;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 70px;
+  letter-spacing: 30px;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
+.div_contenedor_ahorcado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div_contenido_img {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 450px;
+}
+
+.img_ahorcado {
+  width: 300px;
+  height: 300px;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.div_contenido_estadisticas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div_contenido_estadisticas span {
+  margin: 15px 0;
+}
+
+.palabra span {
+  color: var(--primary-color);
+  font-size: 40px;
+}
+
+.span_tiempo {
+  color: var(--primary-color);
+  font-size: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*Teclado*/
+.div_keyboard {
+  width: fit-content;
+  margin: 50px 0 30px 0;
+}
+
+.div_empty {
+  width: fit-content;
+  margin: 59px 0;
+}
+
+.keyboard {
+  min-width: 600px;
+  max-width: 1000px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #dde1e7;
+  box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+
+.keyboard .keys {
+  display: flex;
+  justify-content: center;
+}
+
+.keyboard .keys input {
+  height: 30px;
+  min-width: 30px;
+  border: none;
+  outline: none;
+  background: #dde1e7;
+  box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+  margin: 10px;
+  color: grey;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: default;
+}
+
+.keyboard .keys input:hover {
+  background: #b8bdc5;
+}
+
+.keyboard .keys input.utilizada {
+  font-size: 19px;
+  color: var(--tertiary-color);
+  box-shadow: inset -3px -3px 7px #ffffff73,
+    inset 2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+
+/*Media Queries*/
+
+/* Tablets o pantallas medianas (769px a 1024px) */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 50px;
+    letter-spacing: 20px;
+  }
+
+  .div_contenido_img {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .img_ahorcado {
+    width: 250px;
+    height: 250px;
+  }
+
+  .keyboard {
+    min-width: 100%;
+    padding: 15px;
+  }
+
+  .keyboard .keys input {
+    font-size: 14px;
+    height: 28px;
+    min-width: 28px;
+    margin: 8px;
+  }
+
+  .palabra span {
+    font-size: 35px;
+  }
+
+  .span_tiempo {
+    font-size: 18px;
+  }
+}
+
+/* Celulares (pantallas hasta 768px) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 35px;
+    letter-spacing: 10px;
+    text-align: center;
+  }
+
+  .img_ahorcado {
+    width: 200px;
+    height: 200px;
+  }
+
+  .keyboard {
+    padding: 10px;
+    min-width: 100%;
+  }
+
+  .keyboard .keys {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .keyboard .keys input {
+    font-size: 13px;
+    height: 26px;
+    min-width: 26px;
+    margin: 5px;
+  }
+
+  .palabra span {
+    font-size: 28px;
+  }
+
+  .span_tiempo {
+    font-size: 16px;
+  }
+
+  .div_contenido_img {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+}

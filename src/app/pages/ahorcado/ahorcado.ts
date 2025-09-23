@@ -2,17 +2,20 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth';
 import { SupabaseService } from '../../services/supabase';
 import { Navbar } from '../navbar/navbar';
+import { Juegos } from '../../services/juegos';
+import { WordApi } from '../../services/word-api';
+import { User } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-ahorcado',
   imports: [Navbar],
-  templateUrl: './ahorcado.component.html',
-  styleUrl: './ahorcado.component.css'
+  templateUrl: './ahorcado.html',
+  styleUrl: './ahorcado.css'
 })
-export class AhorcadoComponent implements OnInit{
+export class Ahorcado implements OnInit{
   sb = inject(SupabaseService);
   auth = inject(AuthService);
-  database_juegos = inject(DatabaseJuegosService);
+  database_juegos = inject(Juegos);
 
   palabra: string = "";
   cargando_palabra: boolean = false;
@@ -36,7 +39,7 @@ export class AhorcadoComponent implements OnInit{
   juego_finalizado: number = 0;
   AuthService: any;
 
-  constructor(private wordApiService: WordApiService) { }
+  constructor(private wordApiService: WordApi) { }
 
   async ngOnInit() {
     await this.obtenerIdYNombre();
@@ -87,14 +90,19 @@ export class AhorcadoComponent implements OnInit{
   }
 
   async obtenerIdYNombre() {
-    await this.AuthService.getUsuarioActual().then(async(usuario) => {
+    await this.auth.getUsuarioActual().then(async (usuario: User | null) => {
       if (usuario) {
-        const data_user = await this.sb.supabase.from("usuarios").select("id, nombre").eq("correo", usuario.email);
-        this.id = data_user.data![0].id;
-        this.usuario = data_user.data![0].nombre;
+        const { data } = await this.sb.supabase
+          .from("usuarios")
+          .select("id, nombre")
+          .eq("correo", usuario.email);
+
+        this.id = data![0].id;
+        this.usuario = data![0].nombre;
       }
-    })
-  }
+    });
+}
+
 
   async compararYGuardarPuntaje() {
     const puntaje_actual = await this.database_juegos.obtenerAhorcado(Number(this.id));

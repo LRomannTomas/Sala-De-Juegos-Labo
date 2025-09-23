@@ -1,1 +1,65 @@
-<p>ahorcado works!</p>
+<app-navbar></app-navbar>
+<div class="div_main user_background">
+    @if(cargando_palabra === true) {
+    <div class="spinner_container">
+        <div class="spinner"></div>
+    </div>
+    } @else {
+    @if(juego_finalizado === 0){
+    <div class="div_body">
+        <h1>Ahorcado</h1>
+        <div class="div_contenedor_ahorcado">
+            <div class="div_contenido_img">
+                <img class="img_ahorcado" [src]="url_ahorcado" alt="horca">
+                <div class="div_contenido_estadisticas">
+                    <span class="span_tiempo">Tiempo: {{tiempoTranscurrido}}</span>
+                    <span class="span_tiempo">Fallos: {{fallos}}</span>
+                </div>
+            </div>
+            <div class="palabra">
+                @if(!play) {
+                <button class="btn_jugar" (click)="jugar()"><i class="bi bi-play-fill"></i></button>
+                } @else {
+                @for (letra of palabra.split(""); track letra) {
+                <span>{{letras_adivinadas.includes(letra) ? letra : "_"}}</span>
+                }
+                }
+            </div>
+        </div>
+        <!--Teclado-->
+        @if(play) {
+        <div class="div_keyboard">
+            <div class="keyboard">
+                <div class="keys">
+                    @for (letra of ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P']; track letra) {
+                    <input type="button" value="{{letra}}" (click)="adivinarLetra(letra, $event)" [disabled]="letras_utilizadas.includes(letra)">
+                    }
+                </div>
+                <div class="keys">
+                    @for (letra of ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ']; track letra) {
+                    <input type="button" value="{{letra}}" (click)="adivinarLetra(letra, $event)" [disabled]="letras_utilizadas.includes(letra)">
+                    }
+                </div>
+                <div class="keys">
+                    @for (letra of ['Z', 'X', 'C', 'V', 'B', 'N', 'M']; track letra) {
+                    <input type="button" value="{{letra}}" (click)="adivinarLetra(letra, $event)" [disabled]="letras_utilizadas.includes(letra)">
+                    }
+                </div>
+            </div>
+        </div>
+        } @else {
+        <div class="div_empty"></div>
+        }
+    </div>
+    } @else {
+    <div class="div_final_juego">
+        @if(juego_finalizado === 1) {
+        <p>🎉 <span class="victoria">¡¡¡Ganaste!!!</span> 🎉</p>
+        } @else if (juego_finalizado === 2) {
+        <p>💀 <span class="derrota">¡Perdiste!</span> 💀 <br> La palabra era: {{palabra}}</p>
+        }
+        <button (click)="resetear()">Volver a Jugar</button>
+    </div>
+    }
+    }
+</div>
