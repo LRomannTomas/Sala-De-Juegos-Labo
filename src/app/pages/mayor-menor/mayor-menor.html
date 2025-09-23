@@ -1,1 +1,31 @@
-<p>mayor-menor works!</p>
+<app-navbar></app-navbar>
+<div class="div_main user_background">
+    <div class="div_contenedor">
+        <h1>Mayor o Menor</h1>
+        @if(play === false) {
+        <div class="div_baraja">
+            <img src={{url_baraja}} alt="baraja">
+        </div>
+        <button class="btn_jugar" (click)="jugar()"><i class="bi bi-play-fill"></i></button>
+        } @else {
+            @if(max_intentos === 0) {
+                <div class="div_final_juego">
+                    <p>💀 <span class="derrota">¡Perdiste!</span> 💀 <br> Acertaste {{cartas_acertadas}} Cartas</p>
+                    <button (click)="resetear()">Volver a Jugar</button>
+                </div>
+            } @else {
+                <div class="div_cartas">
+                    <img class="img_baraja" src={{url_baraja}} alt="baraja">
+                    <img class="img_carta" [src]="url_cartas" alt="carta">
+                </div>
+                <div class="div_btns">
+                    <button class="btn_menor" (click)="elegirValorDeCarta('menor')">Menor</button>
+                    <span>Aciertos: {{cartas_acertadas}}</span>
+                    <span class="pipe">|</span>
+                    <span>Intentos: {{max_intentos}}</span>
+                    <button class="btn_mayor" (click)="elegirValorDeCarta('mayor')">Mayor</button>
+                </div>
+            }
+        }
+    </div>
+</div>

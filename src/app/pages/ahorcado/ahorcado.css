@@ -1,229 +1,195 @@
-.spinner_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
-
-.spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid var(--tertiary-color);
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  animation: spin 2s linear infinite;
-}
-
 .user_background {
   background-image: url("../../../../public/images/ahorcado/fondo_ahorcado.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-.div_body {
+.user_background::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); /* oscurece un poco para resaltar */
+  z-index: 0;
+}
+
+.div_body
+{
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
   min-height: 100dvh;
 }
 
-h1 {
-  color: var(--primary-color);
-  font-size: 70px;
-  letter-spacing: 30px;
-  text-decoration: underline;
-  margin-bottom: 30px;
-}
-
-.div_contenedor_ahorcado {
+.div_final_juego {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
+/* 🎃 Título */
+h1 {
+  color: #f8f8f8;
+  font-size: 70px;
+  letter-spacing: 20px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+  margin-bottom: 20px;
+}
+
+/* Contenedor principal */
+.div_contenedor_ahorcado {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Imagen + estadísticas */
 .div_contenido_img {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 450px;
+  margin-bottom: 20px;
 }
 
 .img_ahorcado {
-  width: 300px;
-  height: 300px;
-  z-index: 1;
-  margin-bottom: 10px;
-}
-
-.div_contenido_estadisticas {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 280px;
+  height: 280px;
 }
 
 .div_contenido_estadisticas span {
-  margin: 15px 0;
+  margin: 10px 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.palabra span {
-  color: var(--primary-color);
-  font-size: 40px;
+/* Palabra en juego */
+.palabra {
+  margin-top: 20px;
+  font-size: 50px;
+  color: #f8f8f8;
+  letter-spacing: 12px;
+  font-family: "Courier New", monospace;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
-.span_tiempo {
-  color: var(--primary-color);
-  font-size: 20px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/*Teclado*/
-.div_keyboard {
-  width: fit-content;
-  margin: 50px 0 30px 0;
-}
-
-.div_empty {
-  width: fit-content;
-  margin: 59px 0;
-}
-
+/* Teclado */
 .keyboard {
-  min-width: 600px;
-  max-width: 1000px;
+  margin-top: 40px;
   padding: 20px;
-  border-radius: 10px;
-  background: #dde1e7;
-  box-shadow: -3px -3px 7px #ffffff73,
-    2px 2px 5px rgba(94, 104, 121, 0.288);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.3),
+              inset -2px -2px 6px rgba(255,255,255,0.2);
 }
 
 .keyboard .keys {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  margin: 6px 0;
 }
 
 .keyboard .keys input {
-  height: 30px;
-  min-width: 30px;
+  height: 40px;
+  width: 40px;
+  margin: 6px;
   border: none;
   outline: none;
-  background: #dde1e7;
-  box-shadow: -3px -3px 7px #ffffff73,
-    2px 2px 5px rgba(94, 104, 121, 0.288);
-  margin: 10px;
-  color: grey;
-  font-size: 15px;
-  border-radius: 5px;
-  cursor: default;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #ffffffd9;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.keyboard .keys input:hover {
-  background: #b8bdc5;
+.keyboard .keys input:hover:not(:disabled) {
+  background: #1e88e5;
+  color: #fff;
+  transform: scale(1.1);
 }
 
-.keyboard .keys input.utilizada {
-  font-size: 19px;
-  color: var(--tertiary-color);
-  box-shadow: inset -3px -3px 7px #ffffff73,
-    inset 2px 2px 5px rgba(94, 104, 121, 0.288);
+.keyboard .keys input:disabled {
+  background: #888;
+  color: #333;
+  cursor: not-allowed;
+  transform: none;
 }
 
-/*Media Queries*/
+/* Pantalla final */
+.div_final_juego {
+  background: rgba(39, 38, 39, 0.75);
+  backdrop-filter: blur(10px); 
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
 
-/* Tablets o pantallas medianas (769px a 1024px) */
-@media (max-width: 1024px) {
-  h1 {
-    font-size: 50px;
-    letter-spacing: 20px;
-  }
+  width: fit-content;
+  max-width: 550px;
+  margin: auto;
 
-  .div_contenido_img {
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-  }
+  text-align: center;
+  animation: popIn 0.5s ease;
 
-  .img_ahorcado {
-    width: 250px;
-    height: 250px;
-  }
+  max-height: 350px; 
+    
 
-  .keyboard {
-    min-width: 100%;
-    padding: 15px;
-  }
-
-  .keyboard .keys input {
-    font-size: 14px;
-    height: 28px;
-    min-width: 28px;
-    margin: 8px;
-  }
-
-  .palabra span {
-    font-size: 35px;
-  }
-
-  .span_tiempo {
-    font-size: 18px;
-  }
 }
 
-/* Celulares (pantallas hasta 768px) */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 35px;
-    letter-spacing: 10px;
-    text-align: center;
-  }
+.div_final_juego p {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+}
 
-  .img_ahorcado {
-    width: 200px;
-    height: 200px;
-  }
+.victoria {
+  color: #4caf50;
+  font-weight: bold;
+  text-shadow: 0 0 10px #4caf50;
+}
 
-  .keyboard {
-    padding: 10px;
-    min-width: 100%;
-  }
+.derrota {
+  color: #f44336;
+  font-weight: bold;
+  text-shadow: 0 0 10px #f44336;
+}
 
-  .keyboard .keys {
-    flex-wrap: wrap;
-    gap: 4px;
-  }
+.div_final_juego button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #1ecee5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-  .keyboard .keys input {
-    font-size: 13px;
-    height: 26px;
-    min-width: 26px;
-    margin: 5px;
-  }
+.div_final_juego button:hover {
+  background: #158ac0;
+  transform: scale(1.05);
+}
 
-  .palabra span {
-    font-size: 28px;
+/* Animación de aparición */
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
-
-  .span_tiempo {
-    font-size: 16px;
-  }
-
-  .div_contenido_img {
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

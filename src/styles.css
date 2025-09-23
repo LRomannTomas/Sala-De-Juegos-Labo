@@ -23,6 +23,7 @@
   place-items: center;
   text-align: center;
   min-height: 100dvh;
+  padding-top: 40px;
 }
 
 .user_background {
