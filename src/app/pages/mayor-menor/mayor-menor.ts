@@ -4,13 +4,13 @@ import { SupabaseService } from '../../services/supabase';
 import { AuthService } from '../../services/auth';
 import { Juegos } from '../../services/juegos';
 import { RandomNumbers } from '../../services/random-numbers';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-mayor-menor',
-  imports: [Navbar],
+  imports: [Navbar, CommonModule],
   templateUrl: './mayor-menor.html',
-  styleUrl: './mayor-menor.css'
+  styleUrl: './mayor-menor.css',
 })
 export class MayorMenor implements OnInit {
   sb = inject(SupabaseService);
@@ -25,8 +25,13 @@ export class MayorMenor implements OnInit {
   url_baraja!: string;
   url_cartas!: string;
 
-  id: string = "";
-  usuario: string = "";
+  cartaReferencia: number = 0;
+  cartaSaliente: number | null = null;
+
+  url_nueva_carta: string = '';
+  resultado_carta: 'acierto' | 'error' | null = null;
+  id: string = '';
+  usuario: string = '';
 
   imagenes: string[] = [];
 
@@ -36,55 +41,76 @@ export class MayorMenor implements OnInit {
   }
 
   async obtenerIdYNombre() {
-    await this.auth.getUsuarioActual().then(async(usuario) => {
+    await this.auth.getUsuarioActual().then(async (usuario) => {
       if (usuario) {
-        const data_user = await this.sb.supabase.from("usuarios").select("id, nombre").eq("correo", usuario.email);
+        const data_user = await this.sb.supabase
+          .from('usuarios')
+          .select('id, nombre')
+          .eq('correo', usuario.email);
         this.id = data_user.data![0].id;
         this.usuario = data_user.data![0].nombre;
       }
-    })
+    });
   }
 
   jugar() {
-    this.carta_actual = this.randomNumber.getRandomNumber(1, 12);
-    this.url_cartas = this.imagenes[this.carta_actual];
+    this.cartaReferencia = this.randomNumber.getRandomNumber(1, 12);
+    this.url_cartas = this.imagenes[this.cartaReferencia];
     this.play = true;
   }
 
-  elegirValorDeCarta(eleccion: "mayor" | "menor") {
-    let nueva_carta = this.randomNumber.getRandomNumber(1, 12);
+  elegirValorDeCarta(eleccion: 'mayor' | 'menor') {
+    let nueva_carta: number;
 
-    //Para evitar repetir la carta, dado que no hay un botón de empate
     do {
       nueva_carta = this.randomNumber.getRandomNumber(1, 12);
-    } while (nueva_carta === this.carta_actual);
+    } while (nueva_carta === this.cartaReferencia);
 
-    const acierto = (eleccion === 'mayor' && nueva_carta > this.carta_actual) ||
-      (eleccion === 'menor' && nueva_carta < this.carta_actual);
+    this.cartaSaliente = nueva_carta;
+
+    const acierto =
+      (eleccion === 'mayor' && nueva_carta > this.cartaReferencia) ||
+      (eleccion === 'menor' && nueva_carta < this.cartaReferencia);
 
     if (acierto) {
       this.cartas_acertadas++;
+      this.resultado_carta = 'acierto';
     } else {
       this.max_intentos--;
+      this.resultado_carta = 'error';
     }
 
-    if(this.max_intentos <= 0) {
+    if (this.max_intentos <= 0) {
       this.finalizarJuego();
+      return;
     }
 
-    this.carta_actual = nueva_carta;
-    this.url_cartas = this.imagenes[nueva_carta];
+    setTimeout(() => {
+      this.cartaReferencia = nueva_carta;
+      this.url_cartas = this.imagenes[this.cartaReferencia];
+      this.cartaSaliente = null;
+      this.resultado_carta = null;
+    }, 1200);
   }
 
   async finalizarJuego() {
-    const puntaje_actual = await this.database_juegos.obtenerMayorOMenor(Number(this.id));
+    const puntaje_actual = await this.database_juegos.obtenerMayorOMenor(
+      Number(this.id)
+    );
 
-    if(!puntaje_actual || puntaje_actual.length === 0) {
-      this.database_juegos.guardarMayorOMenor(Number(this.id), this.usuario, this.cartas_acertadas);
+    if (!puntaje_actual || puntaje_actual.length === 0) {
+      this.database_juegos.guardarMayorOMenor(
+        Number(this.id),
+        this.usuario,
+        this.cartas_acertadas
+      );
     } else {
-        const cartas_anteriores = puntaje_actual[0].cartas_acertadas;
-        if(this.cartas_acertadas > cartas_anteriores) {
-          this.database_juegos.actualizarMayorOMenor(Number(this.id), this.cartas_acertadas);
+      const cartas_anteriores = puntaje_actual[0].cartas_acertadas;
+      if (this.cartas_acertadas > cartas_anteriores) {
+        this.database_juegos.actualizarMayorOMenor(
+          Number(this.id),
+          this.cartas_acertadas
+        );
       }
     }
   }
@@ -93,7 +119,7 @@ export class MayorMenor implements OnInit {
     this.max_intentos = 10;
     this.cartas_acertadas = 0;
     this.carta_actual = 0;
-    this.url_cartas = "";
+    this.url_cartas = '';
     this.play = false;
   }
 
@@ -108,22 +134,22 @@ export class MayorMenor implements OnInit {
     };
 
     this.imagenes = [
-      "images/mayor-menor/baraja.jpg",
-      "images/mayor-menor/1.jpg",
-      "images/mayor-menor/2.jpg",
-      "images/mayor-menor/3.jpg",
-      "images/mayor-menor/4.jpg",
-      "images/mayor-menor/5.jpg",
-      "images/mayor-menor/6.jpg",
-      "images/mayor-menor/7.jpg",
-      "images/mayor-menor/8.jpg",
-      "images/mayor-menor/9.jpg",
-      "images/mayor-menor/10.jpg",
-      "images/mayor-menor/11.jpg",
-      "images/mayor-menor/12.jpg",
-    ]
-    
+      'images/mayor-menor/baraja.jpg',
+      'images/mayor-menor/1.jpg',
+      'images/mayor-menor/2.jpg',
+      'images/mayor-menor/3.jpg',
+      'images/mayor-menor/4.jpg',
+      'images/mayor-menor/5.jpg',
+      'images/mayor-menor/6.jpg',
+      'images/mayor-menor/7.jpg',
+      'images/mayor-menor/8.jpg',
+      'images/mayor-menor/9.jpg',
+      'images/mayor-menor/10.jpg',
+      'images/mayor-menor/11.jpg',
+      'images/mayor-menor/12.jpg',
+    ];
+
     this.url_baraja = this.imagenes[0];
-    await Promise.all(this.imagenes.map(src => cargarImagen(src)));
+    await Promise.all(this.imagenes.map((src) => cargarImagen(src)));
   }
 }
