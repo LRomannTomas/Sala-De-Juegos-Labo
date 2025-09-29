@@ -1,1 +1,76 @@
-<p>calculo-mental works!</p>
+<app-navbar></app-navbar>
+<div class="div_main user_background">
+    <h1>Cálculo Mental</h1>
+    @if(play === false) {
+    <img class="img_interrogacion" src="images/calculo-mental/interrogacion.png">
+    <button class="btn_jugar" (click)="generadorDePatrones()"><i class="bi bi-play-fill"></i></button>
+    } @else {
+    @if(juego_finalizado === false) {
+    <div class="div_contenedor">
+        <div class="div_powerups">
+            @if(power_ups.eliminar_opcion.disponible) {
+            <button class="powerup_btn activo" @shock [disabled]="!power_ups.eliminar_opcion.disponible"
+                (click)="powerUpEliminarOpcion()">
+                ❌ Eliminar Opción
+            </button>
+            } @else {
+            <button class="powerup_btn" [disabled]="!power_ups.eliminar_opcion.disponible"
+                (click)="powerUpEliminarOpcion()">
+                ❌ Eliminar Opción
+            </button>
+            }
+
+            @if(power_ups.agregar_tiempo.disponible) {
+            <button class="powerup_btn activo" @shock [disabled]="!power_ups.agregar_tiempo.disponible"
+                (click)="powerUpAgregarTiempo()">
+                ⏱ +3s
+            </button>
+            } @else {
+            <button class="powerup_btn" [disabled]="!power_ups.agregar_tiempo.disponible"
+                (click)="powerUpAgregarTiempo()">
+                ⏱ +3s
+            </button>
+            }
+
+            @if(power_ups.acertar.disponible) {
+            <button class="powerup_btn activo" @shock [disabled]="!power_ups.acertar.disponible"
+                (click)="powerUpAcertar()">
+                ✅ Mostrar Respuesta
+            </button>
+            } @else {
+            <button class="powerup_btn" [disabled]="!power_ups.acertar.disponible" (click)="powerUpAcertar()">
+                ✅ Mostrar Respuesta
+            </button>
+            }
+        </div>
+
+        <div class="div_aciertos">
+            @for(acierto of [].constructor(aciertos_consecutivos); track acierto) {
+              <span class="aciertos"></span>
+            }
+          </div>
+
+        <div class="div_envolvedor">
+            <div class="div_operacion">
+                <span>{{ operacion }}</span>
+            </div>
+            <div class="div_opciones" [@shock]>
+                @for(opcion of opciones; track opcion) {
+                @if(opcion_seleccionada_actual === null || opcion_seleccionada_actual === opcion) {
+                <button class="btn_opts" (click)="verificarRespuesta(opcion, $event.target)" [disabled]="bloqueo">{{
+                    opcion
+                    }}</button>
+                }
+                }
+            </div>
+            <span class="temporizador">Tiempo Restante: {{ tiempo_restante }} Segundos</span>
+        </div>
+    </div>
+    } @else {
+    <div class="div_final_juego">
+        <p>Acertaste <span class="victoria"> {{calculos_acertados}} </span>Cálculos</p>
+        <button (click)="resetear()">Volver a Jugar</button>
+    </div>
+    }
+    }
+</div>

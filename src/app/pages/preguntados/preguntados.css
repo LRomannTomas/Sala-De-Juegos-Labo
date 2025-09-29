@@ -1,0 +1,196 @@
+.user_background {
+  background-image: url("../../../../public/images/preguntados/fondo.png");
+}
+
+.div_encabezado {
+  display: flex;
+  align-items: center;
+  margin: 130px 0 0 0;
+}
+
+.div_encabezado_central h1 {
+  color: var(--primary-color);
+  font-size: 70px;
+  text-decoration: underline;
+  margin: 0 0 10px 0;
+}
+
+.img_lapiz {
+  width: 200px;
+  height: 200px;
+  margin-right: 100px;
+}
+
+.img_banner {
+  width: 600px;
+  height: 170px;
+}
+
+.img_espada {
+  width: 200px;
+  height: 300px;
+  margin-left: 100px;
+}
+
+.div_cuerpo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.div_juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.btn_play {
+  border: none;
+  border-radius: 50%;
+  background-image: url("../../../../public/images/preguntados/play.png");
+  background-size: cover;
+  width: 190px;
+  height: 190px;
+  margin-bottom: 100px;
+}
+
+.div_pregunta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  height: 250px;
+  border: var(--secondary-color) 2px solid;
+  max-width: 1000px;
+}
+
+.div_pregunta span {
+  padding: 0 20px;
+  font-size: 30px;
+  font-weight: 500;
+  user-select: none;
+}
+
+.span_score {
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.div_final_juego {
+  width: 600px;
+  height: 250px;
+  margin-bottom: 100px;
+}
+
+/*Media Queries*/
+/* Tablets o pantallas medianas (769px a 1220px) */
+@media (max-width: 1220px) {
+  .div_encabezado {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 180px;
+  }
+
+  .delete {
+    display: none;
+  }
+
+  .img_banner {
+    width: 450px;
+    height: 130px;
+  }
+
+  .div_cuerpo {
+    flex-direction: column;
+    margin-bottom: 100px;
+  }
+
+  .div_juego {
+    gap: 30px;
+  }
+
+  .btn_play {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 60px;
+  }
+
+  .div_pregunta {
+    height: 200px;
+    max-width: 80%;
+  }
+
+  .div_pregunta span {
+    font-size: 24px;
+    padding: 0 10px;
+  }
+
+  .span_score {
+    font-size: 18px;
+  }
+
+  .div_final_juego {
+    width: 80%;
+    height: auto;
+    margin-bottom: 60px;
+  }
+}
+
+/* Celulares (pantallas hasta 768px) */
+@media (max-width: 768px) {
+  .div_encabezado {
+    margin-top: 20px;
+    align-items: center;
+    margin-top: 150px;
+  }
+
+  .div_encabezado h1 {
+    font-size: 60px;
+  }
+
+  .img_banner {
+    width: 300px;
+    height: 100px;
+  }
+
+  .div_cuerpo {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .div_juego {
+    gap: 20px;
+  }
+
+  .btn_play {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 40px;
+  }
+
+  .div_pregunta {
+    height: 200px;
+    max-width: 90%;
+  }
+
+  .div_pregunta span {
+    font-size: 20px;
+    padding: 0 10px;
+  }
+
+  .span_score {
+    font-size: 16px;
+  }
+
+  .div_final_juego {
+    width: 90%;
+    height: auto;
+    margin-bottom: 200px;
+  }
+}

@@ -1,0 +1,200 @@
+.div_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_background {
+  background-color: var(--secondary-color);
+  background-image: url("../../../../public/images/calculo-mental/fondo_home.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 70px;
+  text-decoration: underline;
+  margin: 100px 0 50px 0;
+}
+
+.img_interrogacion {
+  width: 300px;
+  height: 300px;
+}
+
+.div_contenedor {
+  border: solid 5px var(--primary-color);
+  padding: 20px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+}
+
+.div_aciertos {
+  display: flex;
+  margin: 0 0 20px 10px;
+  gap: 5px;
+}
+
+.aciertos {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--correct-color);
+  animation: brillo 1.5s infinite;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+}
+
+@keyframes brillo {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.div_envolvedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.powerup_btn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 20px;
+  margin: 0 16px 20px 16px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.powerup_btn.activo {
+  background-color: var(--correct-color);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.powerup_btn.activo:hover {
+  background-color: #45a049;
+}
+
+.div_operacion {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  color: var(--primary-color);
+  margin: 0 0 50px 0;
+  padding: 10px 0;
+}
+
+.div_operacion span {
+  font-size: 50px;
+  user-select: none;
+}
+
+.div_opciones {
+  margin: 0 20px 30px 20px;
+}
+
+.btn_opts {
+  margin: 0 20px;
+}
+
+.temporizador {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--tertiary-color);
+}
+
+/*Media Queries*/
+/* Tablets o pantallas medianas (769px a 1024px) */
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 60px;
+  }
+
+  .img_interrogacion {
+    width: 250px;
+    height: 250px;
+  }
+
+  .powerup_btn {
+    font-size: 18px;
+    margin: 0 12px 18px 12px;
+  }
+
+  .div_operacion span {
+    font-size: 40px;
+  }
+
+  .btn_opts {
+    font-size: 20px;
+    margin: 0 15px;
+  }
+
+  .temporizador {
+    font-size: 18px;
+  }
+}
+
+/* Celulares (pantallas hasta 768px) */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 45px;
+    text-align: center;
+    margin: 150px 20px 25px 20px;
+  }
+
+  .img_interrogacion {
+    width: 200px;
+    height: 200px;
+  }
+
+  .div_contenedor {
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+
+  .powerup_btn {
+    font-size: 16px;
+    margin: 0 8px 15px 8px;
+    padding: 6px 12px;
+  }
+
+  .div_operacion span {
+    font-size: 35px;
+  }
+
+  .btn_opts {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+  }
+
+  .temporizador {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .div_aciertos {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

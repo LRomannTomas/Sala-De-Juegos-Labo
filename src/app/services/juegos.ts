@@ -75,4 +75,60 @@ export class Juegos {
     }
   }
 
+  //Preguntados
+  async obtenerPreguntados(id_usuario: number) {
+    const { data, error } = await this.sb.supabase.from("preguntados").select("preguntas_acertadas").eq("id_usuario", id_usuario);
+    
+    if(error) {
+      console.log(error);
+    }
+
+    return data;
+  }
+
+  async guardarPreguntados(id_usuario: number, usuario:string, preguntas: number) {
+    const { data, error } = await this.sb.supabase.from("preguntados").insert({id_usuario: id_usuario, usuario: usuario, preguntas_acertadas: preguntas});
+      
+    if(error) {
+      console.log(error);
+    }
+  }
+
+  async actualizarPreguntados(id_usuario: number, preguntas: number) {
+    const { data, error } = await this.sb.supabase.from("preguntados").update({preguntas_acertadas: preguntas}).eq("id_usuario", id_usuario);
+      
+    if(error) {
+      console.log(error);
+    }
+  }
+
+
+  //Calculo Mental
+  
+  async obtenerCalculoMental(id_usuario: number) {
+    const { data, error } = await this.sb.supabase.from("calculo_mental").select("calculos_acertados").eq("id_usuario", id_usuario);
+    
+    if(error) {
+      console.log(error);
+    }
+
+    return data;
+  }
+
+  async guardarCalculoMental(id_usuario: number, usuario:string, calculos: number) {
+    const { data, error } = await this.sb.supabase.from("calculo_mental").insert({id_usuario: id_usuario, usuario: usuario, calculos_acertados: calculos});
+      
+    if(error) {
+      console.log(error);
+    }
+  }
+
+  async actualizarCalculoMental(id_usuario: number, calculos: number) {
+    const { data, error } = await this.sb.supabase.from("calculo_mental").update({calculos_acertados: calculos}).eq("id_usuario", id_usuario);
+      
+    if(error) {
+      console.log(error);
+    }
+  }
+
 }

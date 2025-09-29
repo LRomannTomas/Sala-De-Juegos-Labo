@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatabaseUsersService } from '../../services/database-users';
 import { Usuario } from '../../classes/usuario';
+import { Navbar } from '../navbar/navbar';
 
 @Component({
   selector: 'app-registro',
-  imports: [FormsModule],
+  imports: [FormsModule,Navbar],
   templateUrl: './registro.html',
   styleUrl: './registro.css'
 })

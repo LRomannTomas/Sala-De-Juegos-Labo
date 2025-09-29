@@ -1,1 +1,37 @@
-<p>preguntados works!</p>
+<app-navbar></app-navbar>
+<div class="div_main user_background">
+    <div class="div_encabezado">
+        <img class="img_lapiz delete" src="images/preguntados/lapiz.png" alt="lapiz">
+        <div class="div_encabezado_central">
+            <h1>Preguntados</h1>
+            <img class="img_banner" src="images/preguntados/banner.png" alt="banner">
+        </div>
+        <img class="img_espada delete" src="images/preguntados/espada.png" alt="espada">
+    </div>
+    <div class="div_cuerpo">
+        <div class="div_juego">
+            @if(play === false) {
+            <button class="btn_play" (click)="jugar()"></button>
+            } @else {
+            @if(juego_finalizado === false) {
+            <div class="div_pregunta">
+                <span>{{ pregunta_actual?.question }}</span>
+            </div>
+            <div class="div_opciones">
+                @for(opcion of opciones; track opcion) {
+                    @if(opcion_seleccionada_actual === null || opcion_seleccionada_actual === opcion) {
+                        <button class="btn_opts" (click)="verificarPregunta(opcion, $event.target)" [disabled]="bloqueo">{{ opcion }}</button>
+                    }
+                }
+            </div>
+            <span class="span_score">Preguntas Acertadas: {{ preguntas_acertadas }}</span>
+            } @else {
+            <div class="div_final_juego">
+                <p>Acertaste <span class="victoria"> {{preguntas_acertadas}} </span>Preguntas</p>
+                <button (click)="resetear()">Volver a Jugar</button>
+            </div>
+            }
+            }
+        </div>
+    </div>
+</div>
