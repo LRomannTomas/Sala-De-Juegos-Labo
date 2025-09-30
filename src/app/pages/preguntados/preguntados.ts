@@ -3,6 +3,7 @@ import { Navbar } from '../navbar/navbar';
 import { SupabaseService } from '../../services/supabase';
 import { AuthService } from '../../services/auth';
 import { Juegos } from '../../services/juegos';
+import { PreguntadosApiService } from '../../services/preguntados-api.service';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class Preguntados implements OnInit {
   sb = inject(SupabaseService);
   auth = inject(AuthService);
   juegos = inject(Juegos);
+  apiPreguntados = inject(PreguntadosApiService);
+
 
   play: boolean = false;
   pregunta_actual: any = null;
@@ -47,29 +50,11 @@ export class Preguntados implements OnInit {
     this.play = true;
   }
 
-  async cargarPreguntas() {
-    try {
-      const response = await fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple');
-      const data = await response.json();
-
-      if (data.results && data.results.length > 0) {
-        this.preguntas = data.results;
-
-        this.preguntas.forEach((pregunta: any) => {
-          pregunta.question = this.decodificarHTML(pregunta.question);
-
-          pregunta.opciones = [
-            ...pregunta.incorrect_answers,
-            pregunta.correct_answer
-          ].map((opcion) => this.decodificarHTML(opcion)).sort(() => Math.random() - 0.5);
-        }
-        )
-      };
-
+   async cargarPreguntas() {
+    this.preguntas = await this.apiPreguntados.getPreguntas();
+    if (this.preguntas.length > 0) {
       this.pregunta_actual = this.preguntas[0];
       this.opciones = this.pregunta_actual.opciones;
-    } catch (error) {
-      console.error('Error con la carga de preguntas:', error);
     }
   }
 
@@ -128,7 +113,7 @@ export class Preguntados implements OnInit {
     this.cargarPreguntas();
   }
 
-  //Decodifica caracteres especiales que provienen de la API
+
   decodificarHTML(html: string) {
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
